@@ -1,12 +1,32 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
-
+LETTER_UPPERCASE = list(string.ascii_lowercase)
+LETTER_LOWERCASE = list(string.ascii_uppercase)
+NUMBERS = list(string.digits)
+TYPES = ['SYMBOLS', 'LETTER_UPPERCASE', 'LETTER_LOWERCASE', 'NUMBERS']
+MAX_NUMBER = 15
+MIN_NUMBER = 7
 
 def generate_password():
-    # Start coding here
+    random_number = random.randrange(MIN_NUMBER, MAX_NUMBER)
+    password = ''
+    for i in range(random_number):
+        index = random.randrange(0,3)
+        type = TYPES[index]
 
+        if type == 'SYMBOLS':
+            password +=  random.choice(SYMBOLS)
+        elif  type == 'LETTER_UPPERCASE':
+            password += random.choice(LETTER_UPPERCASE)
+        elif  type == 'LETTER_LOWERCASE':
+            password += random.choice(LETTER_LOWERCASE)
+        elif  type == 'NUMBERS':
+            password += random.choice(NUMBERS)
+
+    return password
 
 def validate(password):
 
